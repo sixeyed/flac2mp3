@@ -5,4 +5,8 @@ RUN apk update && apk upgrade && \
     
 COPY flac2mp3.pl /
     
-ENTRYPOINT /flac2mp3.pl
+ENV FLAC='/mnt/flac' \
+    MP3='/mnt/mp3'
+    
+CMD /flac2mp3.pl
+ENTRYPOINT [$FLAC, $MP3]
